@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>Menupedia</title>
+    <script src="https://cdn.auth0.com/js/lock-8.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="/vendors/angular.min.js" charset="utf-8"></script>
+    <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="/scripts/client.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/appetizersController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/dessertsController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/entreesController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/homeController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/saladsController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/saucesController.js" charset="utf-8"></script>
   </head>
   <body>
     <h1>Menupedia</h1>
+    <div ng-controller="authController">
+    <!-- <ul ng-hide='showUser'> -->
+      <li><a href="#home">Home</a></li>
+      <li><a href="#appetizers">Appetizers</a></li>
+      <li><a href="#salads">Salads</a></li>
+      <li><a href="#entrees">Entrees</a></li>
+      <li><a href="#sauces">Sauces</a></li>
+      <li><a href="#desserts">Desserts</a></li>
+    </ul>
+  </div>
+    <main ng-view></main>
   </body>
 </html>
