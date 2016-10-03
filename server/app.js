@@ -6,6 +6,8 @@ var bpJason = bodyParser.json();
 var mongoose = require('mongoose');
 var path = require('path');
 var port = process.env.PORT || 3000;
+var mongoURI = 'mongodb://localhost:27017/menuItems';
+mongoose.connect(mongoURI);
 
 app.use( express.static( 'public' ) );
 
