@@ -8,6 +8,8 @@
     <script src="/vendors/angular.min.js" charset="utf-8"></script>
     <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="/scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/stylesheet.css">
     <script src="/scripts/controllers/appetizersController.js" charset="utf-8"></script>
     <script src="/scripts/controllers/dessertsController.js" charset="utf-8"></script>
     <script src="/scripts/controllers/entreesController.js" charset="utf-8"></script>
@@ -18,7 +20,8 @@
   <body>
     <h1>Menupedia</h1>
     <div ng-controller="authController">
-    <!-- <ul ng-hide='showUser'> -->
+      <div ng-show='showUser'>
+    <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#appetizers">Appetizers</a></li>
       <li><a href="#salads">Salads</a></li>
@@ -26,6 +29,12 @@
       <li><a href="#sauces">Sauces</a></li>
       <li><a href="#desserts">Desserts</a></li>
     </ul>
+    <button ng-click="logOut()">Log Out</button>
+  </div>
+    <div ng-hide="showUser">
+      Please log in to use Menupedia<br>
+      <button ng-click="logIn()">Log In</button>
+    </div>
   </div>
     <main ng-view></main>
   </body>
