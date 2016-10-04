@@ -32,19 +32,17 @@ myApp.controller('homeController', ['$scope', function($scope) {
 }; // end logIn
 $scope.logOut = function(){
     // call out logOutUrl
-    emptyLocalStorage();
-    location.reload();
-    // $http({
-    //   method: 'GET',
-    //   url: logOutUrl,
-    // }).then( function(data){
-    //   // if logged out OK
-    //   if(data.data == 'OK'){
-    //     // empty localStorage
-    //     emptyLocalStorage();
-    //     $scope.showUser = false;
-    //   }
-    // });
+    $http({
+      method: 'GET',
+      url: logOutUrl,
+    }).then( function(data){
+      // if logged out OK
+      if(data.data == 'OK'){
+        // empty localStorage
+        emptyLocalStorage();
+        $scope.showUser = false;
+      }
+    });
   }; // end logout
 
 $scope.init();
