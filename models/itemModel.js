@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var itemSchema = new Schema({
+  category: String,
   name: {type: String, required: true},
   ingredients: {type: String, required: true},
   sauces: String,
