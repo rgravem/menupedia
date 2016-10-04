@@ -1,1 +1,30 @@
-in appetizers
+<div ng-init="getAppetizers()" ng-controller="appetizersController">
+    <div ng-repeat="apps in items">
+      <div>
+        Name: {{apps.name}}
+      </div>
+      <div>
+        Ingredients: {{apps.ingredients}}
+      </div>
+      <div>
+        Sauces: {{apps.sauces}}
+      </div>
+      <div>
+        Allergies: {{apps.allergies}}
+      </div>
+      <div>
+        Accomidations: {{apps.accomidation}}
+      </div>
+    </div>
+</div>
+
+<!-- {
+    "_id" : ObjectId("57f406e362bffd832b9f0138"),
+    "category" : "appetizer",
+    "name" : "Ahi Crisps",
+    "ingredients" : "lavosh crackers, ahi tuna, sesame seeds, radish",
+    "sauces" : "ponzu sauce, smoked pepper aioli",
+    "allergies" : "dairy, gluten",
+    "accomidation" : "GF",
+    "__v" : 0
+} -->

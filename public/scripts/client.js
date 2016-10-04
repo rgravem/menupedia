@@ -1,7 +1,7 @@
 console.log('sourced client.js');
 
 var myApp = angular.module('myApp', ['ngRoute']);
-var lock = Auth0Lock( 'iIbNnZ1R4Sh6OMUwLSXk2KPF4vAABw0q', 'rgravem.auth0.com' );
+var lock = Auth0Lock( 'BXdX9d8IIlDuwXRsitOdrrwzIDtnD9z2', 'rgravem.auth0.com' );
 var logOutUrl = 'https://rgravem.auth0.com/v2/logout';
 
 myApp.config(['$routeProvider', function($routeProvider){
@@ -69,19 +69,19 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
 }; // end logIn
 $scope.logOut = function(){
     // call out logOutUrl
-    emptyLocalStorage();
-    location.reload();
-    // $http({
-    //   method: 'GET',
-    //   url: logOutUrl,
-    // }).then( function(data){
-    //   // if logged out OK
-    //   if(data.data == 'OK'){
-    //     // empty localStorage
-    //     emptyLocalStorage();
-    //     $scope.showUser = false;
-    //   }
-    // });
+    $http({
+      method: 'GET',
+      url: logOutUrl,
+    }).then( function(data){
+      // if logged out OK
+      if(data.data == 'OK'){
+        // empty localStorage
+        console.log('logged out');
+        emptyLocalStorage();
+        $scope.showUser = false;
+        location.reload();
+      }
+    });
   }; // end logout
 
 $scope.init();
