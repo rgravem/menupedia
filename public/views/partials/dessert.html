@@ -1,1 +1,19 @@
-in desserts
+<div ng-init="getDesserts()" ng-controller="dessertsController">
+    <div ng-repeat="desserts in items">
+      <div>
+        Name: {{desserts.name}}
+      </div>
+      <div>
+        Ingredients: {{desserts.ingredients}}
+      </div>
+      <div>
+        Sauces: {{desserts.sauces}}
+      </div>
+      <div>
+        Allergies: {{desserts.allergies}}
+      </div>
+      <div>
+        Accomidations: {{desserts.accomidation}}
+      </div>
+    </div>
+</div>

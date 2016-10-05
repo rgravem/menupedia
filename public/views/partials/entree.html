@@ -1,1 +1,19 @@
-in entrees
+<div ng-init="getEntrees()" ng-controller="entreesController">
+    <div ng-repeat="entrees in items">
+      <div>
+        Name: {{entrees.name}}
+      </div>
+      <div>
+        Ingredients: {{entrees.ingredients}}
+      </div>
+      <div>
+        Sauces: {{entrees.sauces}}
+      </div>
+      <div>
+        Allergies: {{entrees.allergies}}
+      </div>
+      <div>
+        Accomidations: {{entrees.accomidation}}
+      </div>
+    </div>
+</div>

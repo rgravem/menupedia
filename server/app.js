@@ -19,12 +19,12 @@ app.listen(port, function(){
 
 app.get('/test', function(req, res) {
   var dummyItem = new Menuitem({
-    category: 'appetizer',
-    name: 'Ahi Crisps',
-    ingredients: 'lavosh crackers, ahi tuna, sesame seeds, radish',
-    sauces: 'ponzu sauce, smoked pepper aioli',
-    allergies: 'dairy, gluten',
-    accomidation: 'GF',
+    category: "sauce",
+    name: "Smoked pepper aioli",
+    ingredients: "sour cream, mayonnaise, red bell pepper",
+    sauces: "",
+    allergies: "dairy",
+    accomidation: ""
   });
 
   dummyItem.save(function(err) {
@@ -40,7 +40,59 @@ app.get('/test', function(req, res) {
 
 app.get('/appetizers', function(req, res){
   console.log('in get appetizers');
-  Menuitem.find({}, function(err, items){
+  Menuitem.find({category:{$in:["appetizer"]}}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
+app.get('/salads', function(req, res){
+  console.log('in get salads');
+  Menuitem.find({category:{$in:["salad"]}}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
+app.get('/entrees', function(req, res){
+  console.log('in get entrees');
+  Menuitem.find({category:{$in:["entree"]}}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
+app.get('/sauces', function(req, res){
+  console.log('in get sauces');
+  Menuitem.find({category:{$in:["sauce"]}}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
+app.get('/desserts', function(req, res){
+  console.log('in get desserts');
+  Menuitem.find({category:{$in:["dessert"]}}, function(err, items){
     if(err){
     console.log('error getting item');
     res.sendStatus(500);

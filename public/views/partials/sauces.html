@@ -1,1 +1,16 @@
-in sauces
+<div ng-init="getSauces()" ng-controller="saucesController">
+    <div ng-repeat="sauces in items">
+      <div>
+        Name: {{sauces.name}}
+      </div>
+      <div>
+        Ingredients: {{sauces.ingredients}}
+      </div>
+      <div>
+        Allergies: {{sauces.allergies}}
+      </div>
+      <div>
+        Accomidations: {{sauces.accomidation}}
+      </div>
+    </div>
+</div>

@@ -1,1 +1,19 @@
-in salads
+<div ng-init="getSalads()" ng-controller="saladsController">
+    <div ng-repeat="salads in items">
+      <div>
+        Name: {{salads.name}}
+      </div>
+      <div>
+        Ingredients: {{salads.ingredients}}
+      </div>
+      <div>
+        Sauces: {{salads.sauces}}
+      </div>
+      <div>
+        Allergies: {{salads.allergies}}
+      </div>
+      <div>
+        Accomidations: {{salads.accomidation}}
+      </div>
+    </div>
+</div>
