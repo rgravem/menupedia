@@ -1,4 +1,4 @@
-myApp.controller('homeController', ['$scope', function($scope) {
+myApp.controller('homeController', ['$scope', '$http', function($scope, $http) {
   console.log('test homeController');
 // run controller on load
   $scope.init = function(){
@@ -16,34 +16,8 @@ myApp.controller('homeController', ['$scope', function($scope) {
     }
   }; // end init
 
-//   $scope.logIn = function(){
-//   console.log('in logIn');
-//   lock.show( function( err, profile, token ){
-//     if(err){
-//       console.log('err:', err);
-//     }else{
-//       localStorage.setItem( 'userToken', token );
-//       console.log( 'token:', token );
-//       localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
-//       console.log('Auth0 success, Profile:', profile);
-//       location.reload();
-//     }
-//   });
-// }; // end logIn
-// $scope.logOut = function(){
-//     // call out logOutUrl
-//     $http({
-//       method: 'GET',
-//       url: logOutUrl,
-//     }).then( function(data){
-//       // if logged out OK
-//       if(data.data == 'OK'){
-//         // empty localStorage
-//         emptyLocalStorage();
-//         $scope.showUser = false;
-//       }
-//     });
-//   }; // end logout
+  $scope.searchIn = function(){
+    console.log('search button clicked sent:', $scope.search);
+  };
 
-$scope.init();
 }]);
