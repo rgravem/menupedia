@@ -18,7 +18,7 @@
     <script src="/scripts/controllers/saucesController.js" charset="utf-8"></script>
   </head>
   <body>
-    <div ng-controller="authController">
+    <div class='auth' ng-controller="authController">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container" ng-show='showUser'>
         <div class="navbar-header">
@@ -32,12 +32,12 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#home">Home</a></li>
-            <li><a href="#appetizers">Appetizers</a></li>
-            <li><a href="#salads">Salads</a></li>
-            <li><a href="#entrees">Entrees</a></li>
-            <li><a href="#sauces">Sauces</a></li>
-            <li><a href="#desserts">Desserts</a></li>
+            <li class="active"><a data-toggle="collapse" data-target=".navbar-collapse" href="#home">Home</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#appetizers">Appetizers</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#salads">Salads</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#entrees">Entrees</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#sauces">Sauces</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#desserts">Desserts</a></li>
           </ul>
         </div>
       </div>
@@ -51,7 +51,7 @@
     <button type="button" class="btn btn-default" ng-click="logIn()">Log In</button>
   </div>
   </div>
-    <main ng-view></main>
+    <main class='main' ng-view></main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
