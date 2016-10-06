@@ -18,6 +18,12 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http) {
 
   $scope.searchIn = function(){
     console.log('search button clicked sent:', $scope.search);
+    $http({
+      method: 'GET',
+      url: '/items?q=' + $scope.search,
+    }).then(function(response){
+      console.log('back with:', response.data);
+    });
   };
 
 }]);

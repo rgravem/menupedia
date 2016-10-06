@@ -103,6 +103,21 @@ app.get('/desserts', function(req, res){
   }); // end find
 }); // end get call
 
+app.get('/items', function(req, res){
+  console.log('q is:', req.query.q);
+  var query = req.query.q;
+  console.log('query:', query);
+  Menuitem.find({"name": { $regex: query, $options: '-i'}}, function(err, items){
+    if(err){
+      console.log('error getting item');
+      res.sendStatus(500);
+    }else{
+      console.log('got these items:', items);
+      res.send(items);
+    }
+  });
+});
+
 app.get("/*", function(req,res){
     console.log("Here is the property: ", req.params[0]);
     var file = req.params[0] || "/views/index.html";
