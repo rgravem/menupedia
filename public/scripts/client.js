@@ -112,9 +112,19 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
       console.log('role from db:', data.data[0].role);
       role = data.data[0].role;
       console.log('existing user role:', role);
+      checkAdmin();
   } // end else
-  });
-  };
+}); // end http call
+}; // end check role
+
+var checkAdmin = function(){
+  console.log('in check admin, role:', role);
+  if (role > 1) {
+    $scope.admin = true;
+  }else{
+    $scope.admin = false;
+  }
+};
 $scope.init();
 
 }]);
