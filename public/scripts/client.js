@@ -105,12 +105,13 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
         data: objectToSend
       }).then(function(data){
         console.log('added user:', data);
-
+        role = data.data.role;
+        console.log('new user role is set as:', role);
       }); // end add user
     } else{
       console.log('role from db:', data.data[0].role);
       role = data.data[0].role;
-      console.log('role:', role);
+      console.log('existing user role:', role);
   } // end else
   });
   };
