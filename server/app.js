@@ -131,8 +131,21 @@ app.post('/checkUser', urlencodedParser, bpJason, function(req, res){
 
 app.post('/addUser', urlencodedParser, bpJason, function(req, res){
   console.log('adding user:', req.body);
-  User.create
-});
+  var newUser = new User({
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role
+  });
+  newUser.save(function(err, user){
+    if (err) {
+      console.log('err saving item:', err);
+      res.sendStatus(500);
+    }else{
+      console.log('item saved successfully');
+      res.send(user);
+    }
+  }); // end of save new user
+}); // end of add user post call
 
 app.get("/*", function(req,res){
     console.log("Here is the property: ", req.params[0]);

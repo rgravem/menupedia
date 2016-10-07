@@ -3,7 +3,7 @@ console.log('sourced client.js');
 var myApp = angular.module('myApp', ['ngRoute']);
 var lock = Auth0Lock( 'BXdX9d8IIlDuwXRsitOdrrwzIDtnD9z2', 'rgravem.auth0.com' );
 var logOutUrl = 'https://rgravem.auth0.com/v2/logout';
-var role = 0;
+var role = 1;
 myApp.config(['$routeProvider', function($routeProvider){
     $routeProvider.
       when("/home", {
@@ -46,32 +46,7 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
       $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile'));
       console.log( 'logged in as:', $scope.userProfile );
       $scope.showUser = true;
-      var objectToSend = {
-        name: $scope.userProfile.name,
-        email: $scope.userProfile.email,
-        role: 0
-      };
-      console.log('sending:', objectToSend);
-      $http({
-        method: 'POST',
-        url:'/checkUser',
-        data: objectToSend
-      }).then(function(data){
-        if (data.data == true) {
-          console.log('role from db:', data.data);
-          role = data.data;
-          console.log('role:', role);
-        } else {
-        $http({
-          method: 'POST',
-          url:'/addUser',
-          data: objectToSend
-        }).then(function(data){
-          console.log('data');
-
-        });
-        }
-      });
+      checkRole();
     }else{
       // if no info saved, make sure empty
       emptyLocalStorage();
@@ -93,7 +68,7 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
     }
   });
 }; // end logIn
-$scope.logOut = function(){
+  $scope.logOut = function(){
     // call out logOutUrl
     $http({
       method: 'GET',
@@ -109,8 +84,38 @@ $scope.logOut = function(){
       }
     });
   }; // end logout
+  var checkRole = function(){
+    console.log('checking role');
+    var objectToSend = {
+    name: $scope.userProfile.name,
+    email: $scope.userProfile.email,
+    role: 1
+    };
+    console.log('sending:', objectToSend);
+    $http({
+    method: 'POST',
+    url:'/checkUser',
+    data: objectToSend
+    }).then(function(data){
+    console.log('got back from server with:', data);
+    if (data.data[0] == undefined) {
+      $http({
+        method: 'POST',
+        url:'/addUser',
+        data: objectToSend
+      }).then(function(data){
+        console.log('added user:', data);
 
+      }); // end add user
+    } else{
+      console.log('role from db:', data.data[0].role);
+      role = data.data[0].role;
+      console.log('role:', role);
+  } // end else
+  });
+  };
 $scope.init();
+
 }]);
 
 var emptyLocalStorage = function(){
