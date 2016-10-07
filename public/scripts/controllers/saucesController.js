@@ -1,5 +1,6 @@
 myApp.controller('saucesController', ['$scope', '$http', function($scope, $http) {
   console.log('test saucesController');
+  console.log('role:', role);
   $scope.getSauces = function() {
     $http({
       method: 'GET',

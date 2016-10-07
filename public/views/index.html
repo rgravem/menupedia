@@ -38,14 +38,13 @@
             <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#entrees">Entrees</a></li>
             <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#sauces">Sauces</a></li>
             <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#desserts">Desserts</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Admin</a></li>
+            <li ng-show='showUser'><a ng-click='logOut()' data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Log out</a></li>
+            <li ng-hide='showUser'><a ng-click='logIn()' data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Log In</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div ng-show='showUser'>
-      Logged in as {{userProfile.name}}
-  <button type="button" class="btn btn-default" ng-click="logOut()">Log Out</button>
-</div>
   <div ng-hide="showUser">
     <h4>Please log in to access Menupedia.</h4>
     <button type="button" class="btn btn-default" ng-click="logIn()">Log In</button>

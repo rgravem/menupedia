@@ -21,9 +21,12 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http) {
     $http({
       method: 'GET',
       url: '/items?q=' + $scope.search,
-    }).then(function(response){
+    }).then(function successCallback(response){
       console.log('back with:', response.data);
-    });
-  };
+      $scope.items = response.data;
+    }, function errorCallback(response){
+      console.log(response);
+    }); // end query call
+  }; // end search
 
 }]);

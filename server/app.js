@@ -12,19 +12,17 @@ mongoose.connect(mongoURI);
 app.use( express.static( 'public' ) );
 
 var Menuitem = require('../models/menuItemModel.js');
+var User = require('../models/userModel.js');
 
 app.listen(port, function(){
   console.log('server up on 3000');
 });
 
 app.get('/test', function(req, res) {
-  var dummyItem = new Menuitem({
-    category: "sauce",
-    name: "Smoked pepper aioli",
-    ingredients: "sour cream, mayonnaise, red bell pepper",
-    sauces: "",
-    allergies: "dairy",
-    accomidation: ""
+  var dummyItem = new User({
+    name: "Ross Gravem",
+    email: "rossgravem@gmail.com",
+    role: "4"
   });
 
   dummyItem.save(function(err) {
@@ -116,6 +114,24 @@ app.get('/items', function(req, res){
       res.send(items);
     }
   });
+});
+
+app.post('/checkUser', urlencodedParser, bpJason, function(req, res){
+  console.log('checking user:', req.body);
+  User.find({email:{$in:[req.body.email]}}, function(err, role){
+    if(err){
+      console.log('error getting role');
+      res.sendStatus(500);
+    }else{
+      console.log('got this role:', role);
+      res.send(role);
+    }
+  });
+});
+
+app.post('/addUser', urlencodedParser, bpJason, function(req, res){
+  console.log('adding user:', req.body);
+  User.create
 });
 
 app.get("/*", function(req,res){
