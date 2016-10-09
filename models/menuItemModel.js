@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var menuItemSchema = new Schema({
-  category: String,
+  category: {type: String, enum: ['appetizer', 'salad', 'entree', 'dessert', 'sauce']},
   name: {type: String, required: true},
   ingredients: {type: String, required: true},
   sauces: String,

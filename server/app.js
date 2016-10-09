@@ -114,7 +114,7 @@ app.get('/items', function(req, res){
       res.send(items);
     }
   });
-});
+}); // end search
 
 app.post('/checkUser', urlencodedParser, bpJason, function(req, res){
   console.log('checking user:', req.body);
@@ -127,7 +127,7 @@ app.post('/checkUser', urlencodedParser, bpJason, function(req, res){
       res.send(role);
     }
   });
-});
+}); // end checkUser
 
 app.post('/addUser', urlencodedParser, bpJason, function(req, res){
   console.log('adding user:', req.body);
@@ -146,6 +146,11 @@ app.post('/addUser', urlencodedParser, bpJason, function(req, res){
     }
   }); // end of save new user
 }); // end of add user post call
+
+app.get('/enum', function(req, res) {
+  console.log('enum get hit');
+  res.send(Menuitem.schema.path('category').enumValues);
+});
 
 app.get("/*", function(req,res){
     console.log("Here is the property: ", req.params[0]);

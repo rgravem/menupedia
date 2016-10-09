@@ -10,6 +10,6 @@ myApp.controller('entreesController', ['$scope', '$http', function($scope, $http
         }, function errorCallback(response) {
             console.log('err');
         }); // end http call
-    }; // end getSalads
+    }; // end getEntrees
 
 }]);

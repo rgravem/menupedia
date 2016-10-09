@@ -16,6 +16,7 @@
     <script src="/scripts/controllers/homeController.js" charset="utf-8"></script>
     <script src="/scripts/controllers/saladsController.js" charset="utf-8"></script>
     <script src="/scripts/controllers/saucesController.js" charset="utf-8"></script>
+    <script src="/scripts/controllers/adminController.js" charset="utf-8"></script>
   </head>
   <body>
     <div class='auth' ng-controller="authController">
@@ -32,15 +33,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a data-toggle="collapse" data-target=".navbar-collapse" href="#home">Home</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#appetizers">Appetizers</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#salads">Salads</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#entrees">Entrees</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#sauces">Sauces</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#desserts">Desserts</a></li>
-            <li ng-show='admin'><a data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Admin</a></li>
-            <li ng-show='showUser'><a ng-click='logOut()' data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Log Out</a></li>
-            <li ng-hide='showUser'><a ng-click='logIn()' data-toggle="collapse" data-target=".navbar-collapse" href="#admin">Log In</a></li>
+            <li class="active"><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#home">Home</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#appetizers">Appetizers</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#salads">Salads</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#entrees">Entrees</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#sauces">Sauces</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#desserts">Desserts</a></li>
+            <li ng-show='admin'><a data-toggle="collapse" data-target=".navbar-collapse.in" href="#admin">Admin</a></li>
+            <li ng-show='showUser'><a ng-click='logOut()' data-toggle="collapse" data-target=".navbar-collapse.in" href="#admin">Log Out</a></li>
+            <li ng-hide='showUser'><a ng-click='logIn()' data-toggle="collapse" data-target=".navbar-collapse.in" href="#admin">Log In</a></li>
           </ul>
         </div>
       </div>
