@@ -147,6 +147,10 @@ app.post('/addUser', urlencodedParser, bpJason, function(req, res){
   }); // end of save new user
 }); // end of add user post call
 
+app.post('/addNewItem', urlencodedParser, bpJason, function(req, res){
+  console.log('adding new item:', req.body);
+});
+
 app.get('/enum', function(req, res) {
   console.log('enum get hit');
   res.send(Menuitem.schema.path('category').enumValues);

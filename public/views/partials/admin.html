@@ -1,6 +1,6 @@
 <div ng-init='checkAdmin()' ng-controller='adminController'>
   <div ng-show='admin'>
-<h1>admin view</h1>
+<h2>Add Item</h2>
 <div class="form-group">
 <form>
       <label for="category"> Category:
@@ -12,16 +12,16 @@
       <label for="ingredients"> Ingredients:
         <input ng-model="ingredients" class="form-control" id="ingredients" type="text">
       </label>
-      <label for="sauce"> sauce:
-        <input ng-model="sauce" class="form-control" id="sauce" type="text">
+      <label for="sauce"> Sauces:
+        <input ng-model="sauces" class="form-control" id="sauce" type="text">
       </label>
-      <label for="allergies"> allergies:
+      <label for="allergies"> Allergies:
         <input ng-model="allergies" class="form-control" id="allergies" type="text">
       </label>
-      <label for="accomidations"> accomidations:
+      <label for="accomidations"> Accomidations:
         <input ng-model="accomidations" class="form-control" id="accomidations" type="text">
       </label>
-      <!-- <input ng-click="addPet(name, animal, age, image)" type="button" value="Add new" id="addnew"> -->
+      <br><input ng-click="addNewItem()" type="button" value="Add new" class="btn btn-default" id="addnew">
     </form>
   </div>
 </div>
