@@ -163,7 +163,7 @@ addMenuItem.save(function(err, newItem){
     console.log('err saving item:', err);
     res.sendStatus(500);
   }else{
-    console.log('item created successfully');
+    console.log('item created:', newItem);
     res.send(newItem);
   }
 });

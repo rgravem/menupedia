@@ -3,7 +3,7 @@
 <h2>Welcome to Menupedia</h2>
   <p>Please use the menu at the top to select an area of the menu to view or search for a specific item below.</p>
 <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Search:</label>
+      <label class="control-label col-sm-2" for="pwd">Search by menu item:</label>
       <div class="col-sm-10">
         <input type="menuItem" class="form-control" ng-model="search" placeholder="Enter menu item">
       </div>
@@ -14,6 +14,7 @@
       </div>
     </div>
     <div ng-repeat="searchResult in items">
+      <div>Search Reults:<div>
       <div>
         Name: {{searchResult.name}}
       </div>

@@ -38,8 +38,11 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         url: '/addNewItem',
         data: objectToSend
       }).then(function successCallback(response){
-        console.log('back from server with:', response);
-      });
+        console.log('back from server with:', response.data);
+        $scope.items = response.data;
+      }, function errorCallback(response) {
+        console.log('err');
+      });// end http call
     }; // end addNewItem
 
 }]);
