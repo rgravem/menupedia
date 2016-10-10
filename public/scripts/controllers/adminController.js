@@ -25,7 +25,7 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
     $scope.addNewItem = function(){
       console.log('add new item clicked');
       var objectToSend = {
-        categroy: $scope.category,
+        category: $scope.category.type,
         name: $scope.name,
         ingredients: $scope.ingredients,
         sauces: $scope.sauces,

@@ -148,7 +148,25 @@ app.post('/addUser', urlencodedParser, bpJason, function(req, res){
 }); // end of add user post call
 
 app.post('/addNewItem', urlencodedParser, bpJason, function(req, res){
-  console.log('adding new item:', req.body);
+  console.log('adding new item:', req.body.category);
+  console.log(req.body.name);
+   var addMenuItem = new Menuitem({
+    category: req.body.category,
+    name: req.body.name,
+    ingredients: req.body.ingredients,
+    sauces: req.body.sauces,
+    allergies: req.body.allergies,
+    accomidation: req.body.accomidations
+}); // end new Menuitem
+addMenuItem.save(function(err, newItem){
+  if (err) {
+    console.log('err saving item:', err);
+    res.sendStatus(500);
+  }else{
+    console.log('item created successfully');
+    res.send(newItem);
+  }
+});
 });
 
 app.get('/enum', function(req, res) {
