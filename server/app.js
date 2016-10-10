@@ -49,6 +49,19 @@ app.get('/appetizers', function(req, res){
   }); // end find
 }); // end get call
 
+app.get('/showAll', function(req, res){
+  console.log('in get appetizers');
+  Menuitem.find({}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
 app.get('/salads', function(req, res){
   console.log('in get salads');
   Menuitem.find({category:{$in:["salad"]}}, function(err, items){
@@ -165,6 +178,18 @@ addMenuItem.save(function(err, newItem){
   }else{
     console.log('item created:', newItem);
     res.send(newItem);
+  }
+});
+});
+
+app.delete('/deleteItem', urlencodedParser, bpJason, function(req, res){
+  console.log('hit delete on:', req.body);
+  Menuitem.findByIdAndRemove(req.body.id, function(err, results){
+  if(err){
+    console.log('error:', err);
+  }else{
+    console.log('successfully deleted item');
+    res.sendStatus(200);
   }
 });
 });

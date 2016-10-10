@@ -45,4 +45,46 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
       });// end http call
     }; // end addNewItem
 
+    $scope.searchIn = function(){
+      console.log('search button clicked sent:', $scope.name);
+      $http({
+        method: 'GET',
+        url: '/items?q=' + $scope.name,
+      }).then(function successCallback(response){
+        console.log('back with:', response.data);
+        $scope.items = response.data;
+      }, function errorCallback(response){
+        console.log(response);
+      }); // end query call
+    }; // end search
+
+    $scope.showAll = function(){
+      console.log('get all button clicked');
+      $http({
+        method: 'GET',
+        url: '/showAll',
+      }).then(function successCallback(response){
+        console.log('back with:', response.data);
+        $scope.items = response.data;
+      }, function errorCallback(response){
+        console.log(response);
+      }); // end query call
+    }; // end search
+
+    $scope.deleteItem = function(){
+      console.log('delete button clicked');
+      if (confirm('Are you sure you want to delete this?')) {
+      var objectToSend = { id: this.searchResult._id };
+      console.log(objectToSend);
+      $http({
+        method: 'DELETE',
+        url:'/deleteItem',
+        data: objectToSend,
+        headers: {'Content-Type': 'application/json;charset=utf-8'}
+      }).then(function(response){
+        console.log('deleted from menu:', response.data);
+      });
+      }
+    };
+
 }]);
