@@ -21,14 +21,19 @@
       <label for="accomidations"> Accomidations:
         <input ng-model="accomidations" class="form-control" id="accomidations" type="text">
       </label>
-      <br><input ng-click="addNewItem()" type="button" value="Add new" class="btn btn-default" id="addnew">
-      <button ng-click="searchIn()" type="submit" class="btn btn-default">Search item name</button>
-      <button ng-click="showAll()" type="submit" class="btn btn-default">Show all</button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button ng-click="addNewItem()" type="button" class="btn btn-primary">Add new</button>
+        <button ng-click="searchIn()" type="button" class="btn btn-info">Search item by name</button>
+        <button ng-click="showAll()" type="button" class="btn btn-success">Show all</button>
+      </div>
     </form>
     </div>
   </div>
   <div ng-repeat="searchResult in items">
     <h4>Search Reults:</h4>
+    <div>
+      Category: {{searchResult.category}}
+    </div>
     <div>
       Name: {{searchResult.name}}
     </div>
@@ -44,7 +49,7 @@
     <div>
       Accomidations: {{searchResult.accomidation}}
     </div>
-    <button ng-click="deleteItem()" class="btn btn-default">Delete from menu</button>
+    <button ng-click="deleteItem()" class="btn btn-danger">Delete from menu</button>
   </div>
   <h4>New Item Added:</h4>
     <div>

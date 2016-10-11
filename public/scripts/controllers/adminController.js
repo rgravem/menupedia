@@ -83,6 +83,7 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         headers: {'Content-Type': 'application/json;charset=utf-8'}
       }).then(function(response){
         console.log('deleted from menu:', response.data);
+        location.reload();
       });
       }
     };
