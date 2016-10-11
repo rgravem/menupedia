@@ -39,7 +39,8 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         data: objectToSend
       }).then(function successCallback(response){
         console.log('back from server with:', response.data);
-        $scope.items = response.data;
+        $scope.addedItem = true
+        $scope.newestAdd = response.data;
       }, function errorCallback(response) {
         console.log('err');
       });// end http call
@@ -52,6 +53,7 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         url: '/items?q=' + $scope.name,
       }).then(function successCallback(response){
         console.log('back with:', response.data);
+        $scope.search = true;
         $scope.items = response.data;
       }, function errorCallback(response){
         console.log(response);
@@ -65,6 +67,7 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         url: '/showAll',
       }).then(function successCallback(response){
         console.log('back with:', response.data);
+        $scope.search = true;
         $scope.items = response.data;
       }, function errorCallback(response){
         console.log(response);

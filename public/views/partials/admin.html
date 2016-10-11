@@ -29,8 +29,8 @@
     </form>
     </div>
   </div>
+  <h4 ng-show="search">Search Results:</h4>
   <div ng-repeat="searchResult in items">
-    <h4>Search Reults:</h4>
     <div>
       Category: {{searchResult.category}}
     </div>
@@ -51,23 +51,25 @@
     </div>
     <button ng-click="deleteItem()" class="btn btn-danger">Delete from menu</button>
   </div>
+  <div ng-show="addedItem">
   <h4>New Item Added:</h4>
     <div>
-      {{items.category}}
+      Category: {{newestAdd.category}}
     </div>
     <div>
-      {{items.name}}
+      Name: {{newestAdd.name}}
     </div>
     <div>
-      {{items.ingredients}}
+      Ingredients: {{newestAdd.ingredients}}
     </div>
     <div>
-      {{items.sauces}}
+      Sauces: {{newestAdd.sauces}}
     </div>
     <div>
-      {{items.allergies}}
+      Allergies: {{newestAdd.allergies}}
     </div>
     <div>
-      {{items.accomidations}}
+      Accomidations: {{newestAdd.accomidation}}
     </div>
+  </div>
 </div>
