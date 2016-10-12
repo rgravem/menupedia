@@ -5,7 +5,7 @@
 <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Search by menu item:</label>
       <div class="col-sm-10">
-        <input type="menuItem" class="form-control" ng-model="search" placeholder="Enter menu item">
+        <input type="menuItem" class="form-control" id="homeSearch" ng-model="search" placeholder="Enter menu item">
       </div>
     </div>
     <div class="form-group">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div ng-repeat="searchResult in items">
-      <div>Search Reults:</div>
+      <h4>Search Reults:</h4>
       <div>
         Name: {{searchResult.name}}
       </div>

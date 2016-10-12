@@ -34,6 +34,10 @@ myApp.config(['$routeProvider', function($routeProvider){
         templateUrl: "/views/partials/admin.html",
         controller: "adminController"
       }).
+      when("/quiz", {
+        templateUrl: "/views/partials/quiz.html",
+        controller: "quizController"
+      }).
       otherwise({
         redirectTo: "/home"
       });
