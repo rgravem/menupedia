@@ -38,9 +38,23 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
   $scope.addQuestionM = function(multi){
     console.log('multi add hit');
     console.log('question:', multi.question);
-    console.log('answers:', multi.optA);
+    var multiQ = {
+      question: multi.question,
+      a: multi.optA,
+      b: multi.optB,
+      c: multi.optC,
+      d: multi.optD,
+      correct: "placeholder"
+    };
     if(multi.correctAnswerA){
-      console.log('a is right');
-    }else{}
+      multiQ.correct = multi.optA;
+    }else if (multi.correctAnswerB){
+      multiQ.correct = multi.optB;
+    }else if (multi.correctAnswerC){
+      multiQ.correct = multi.optC;
+    }else if (multi.correctAnswerD){
+      multiQ.correct = multi.optD;
+    }
+    console.log(multiQ);
   };
 }]); // end quizController
