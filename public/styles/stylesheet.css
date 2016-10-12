@@ -16,3 +16,12 @@ h3 {
 #homeSearch {
   width: 50%
 }
+
+#questionBox {
+  width: 50%
+}
+
+#answerBox {
+  width: 50%;
+  height: 4em
+}

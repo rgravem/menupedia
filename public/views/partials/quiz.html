@@ -7,19 +7,20 @@
     <button ng-click="addMultiQ()" type="button" class="btn btn-primary">Add multiple choice</button>
     <button ng-click="addShortA()" type="button" class="btn btn-primary">Add short answer</button>
     <div ng-repeat="multi in questionM">
-        <input type="text" placeholder="enter question..." ng-model="question"><br>
-        <input type="text" placeholder="answer option 1" ng-model="answer">
-        <input type="checkbox" name="check" value="inline" ng-model="correctAnswer1"> Correct<br>
-        <input type="text" placeholder="answer option 2" ng-model="answer">
-        <input type="checkbox" name="check" value="inline" ng-model="correctAnswer2"> Correct<br>
-        <input type="text" placeholder="answer option 3" ng-model="answer">
-        <input type="checkbox" name="check" value="inline" ng-model="correctAnswer3"> Correct<br>
-        <input type="text" placeholder="answer option 4" ng-model="answer">
-        <input type="checkbox" name="check" value="inline" ng-model="correctAnswer4"> Correct<br>
+        <br><input type="text" id="questionBox" placeholder="enter question..." ng-model="multi.question"><br>
+        <input type="text" placeholder="answer option 1" ng-model="multi.optA">
+        <input type="checkbox" name="check" value="a" ng-model="multi.correctAnswerA"> Correct<br>
+        <input type="text" placeholder="answer option 2" ng-model="multi.optB">
+        <input type="checkbox" name="check" value="b" ng-model="multi.correctAnswerB"> Correct<br>
+        <input type="text" placeholder="answer option 3" ng-model="multi.optC">
+        <input type="checkbox" name="check" value="c" ng-model="multi.correctAnswerC"> Correct<br>
+        <input type="text" placeholder="answer option 4" ng-model="multi.optD">
+        <input type="checkbox" name="check" value="d" ng-model="multi.correctAnswerD"> Correct<br>
+        <button class="btn btn-primary" ng-click="addQuestionM(multi)">Add Question</button>
       </div>
       <div ng-repeat="shortA in questionA">
-        <input type="text" placeholder="enter question..." ng-model="question">
-        <input type="text" placeholder="answer..." ng-model="correctAnswer">
+        <br><input type="text" id="questionBox" placeholder="enter question..." ng-model="shortA.question">
+        <input type="text" id="answerBox" placeholder="answer..." ng-model="shortA.value">
+        <button class="btn btn-primary" ng-click="addQuestion(shortA)">Add Question</button>
   </div>
-  <button class="btn btn-primary" ng-click="addQuiz()">Add Quiz</button>
 </div>
