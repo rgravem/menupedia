@@ -29,18 +29,28 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
     console.log('addQuiz button hit');
     console.log('answer:',shortA.value);
     console.log('question:', shortA.question);
-    var question = {
+    var objectToSend = {
+      quizname: $scope.quizName,
       question: shortA.question,
       answer: shortA.value
     };
-  questionA.push(question);
-  console.log(questionA);
+  console.log(objectToSend);
+  $http({
+    method: 'POST',
+    url: '/addQuizShort',
+    data: objectToSend
+  }).then(function successCallback(response){
+    console.log('back from server with:', response.data);
+  }, function errorCallback(response) {
+    console.log('err');
+  });// end http call
   }; // end addQuestion
 
   $scope.addQuestionM = function(multi){
     console.log('multi add hit');
     console.log('question:', multi.question);
-    var multiQ = {
+    var objectToSend = {
+      quizname: $scope.quizName,
       question: multi.question,
       a: multi.optA,
       b: multi.optB,
@@ -49,27 +59,30 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
       answer: "placeholder"
     };
     if(multi.correctAnswerA){
-      multiQ.answer = multi.optA;
+      objectToSend.answer = multi.optA;
     }else if (multi.correctAnswerB){
-      multiQ.answer = multi.optB;
+      objectToSend.answer = multi.optB;
     }else if (multi.correctAnswerC){
-      multiQ.answer = multi.optC;
+      objectToSend.answer = multi.optC;
     }else if (multi.correctAnswerD){
-      multiQ.answer = multi.optD;
+      objectToSend.answer = multi.optD;
     }
-    console.log(multiQ);
-    questionM.push(multiQ);
-    console.log(questionM);
+    console.log(objectToSend);
+    $http({
+      method: 'POST',
+      url: '/addQuizMulti',
+      data: objectToSend
+    }).then(function successCallback(response){
+      console.log('back from server with:', response.data);
+    }, function errorCallback(response) {
+      console.log('err');
+    });// end http call
   }; // end addQuestionM
 
   $scope.finishedQuiz = function(){
     var objectToSend = {
       quizname: $scope.quizName
     };
-    objectToSend.questionA = questionA;
-    objectToSend.questionM = questionM;
-    console.log('objectToSend ', objectToSend);
-
     $http({
       method: 'POST',
       url: '/addQuiz',
@@ -80,4 +93,33 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
       console.log('err');
     });// end http call
   }; // end finishedQuiz
+
+  $scope.getQuizzes = function(){
+    $http({
+      method: 'GET',
+      url: '/getQuizzes'
+    }).then(function successCallback(response) {
+      $scope.quizzes = response.data;
+      console.log('scope.quiz',$scope.quizzes);
+      console.log('got from server:', response);
+    }, function errorCallback(response) {
+      console.log('err');
+    });// end http call
+  }; // end getQuizzes
+
+  $scope.selectQuiz = function(){
+    var objectToSend = {
+      quizname: $scope.selectedQuiz.quizName
+    };
+    console.log('objectToSend:', objectToSend);
+    $http({
+      method: 'POST',
+      url: '/findQuiz',
+      data: objectToSend
+    }).then(function successCallback(response){
+      console.log('back from server with:', response.data);
+    }, function errorCallback(response){
+      console.log('err');
+    });
+  }; // end selectQuiz
 }]); // end quizController

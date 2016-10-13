@@ -13,6 +13,9 @@ app.use( express.static( 'public' ) );
 
 var Menuitem = require('../models/menuItemModel.js');
 var User = require('../models/userModel.js');
+var Multi = require('../models/multiChoiceModel.js');
+var Short = require('../models/shortAnswerModel.js');
+var Quiz = require('../models/quizModel.js');
 
 app.listen(port, function(){
   console.log('server up on 3000');
@@ -114,6 +117,19 @@ app.get('/desserts', function(req, res){
   }); // end find
 }); // end get call
 
+app.get('/getQuizzes', function(req, res){
+  console.log('in get quizzes');
+  Quiz.find({}, function(err, items){
+    if(err){
+    console.log('error getting item');
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting items');
+    res.send(items);
+    }
+  }); // end find
+}); // end get call
+
 app.get('/items', function(req, res){
   console.log('q is:', req.query.q);
   var query = req.query.q;
@@ -180,6 +196,72 @@ addMenuItem.save(function(err, newItem){
     res.send(newItem);
   }
 });
+}); // end addNewItem
+
+app.post('/addQuiz', urlencodedParser, bpJason, function(req, res){
+  console.log('from client:', req.body);
+  var newQuiz = new Quiz({
+    quizName: req.body.quizname,
+  }); // end newQuiz
+  newQuiz.save(function(err, newQuiz){
+    if(err) {
+      console.log('err saving quiz:', err);
+    }else{
+      console.log('quiz created:', newQuiz);
+      res.send(newQuiz);
+    }
+  });
+}); // end addQuizShor
+
+app.post('/addQuizShort', urlencodedParser, bpJason, function(req, res){
+  console.log('from client:', req.body);
+  var newQuestionShort = new Short({
+    quizName: req.body.quizname,
+    question: req.body.question,
+    answer: req.body.answer,
+  }); // end new quiz question
+  newQuestionShort.save(function(err, newQuestion){
+    if(err) {
+      console.log('err saving question:', err);
+    }else{
+      console.log('question created:', newQuestion);
+      res.send(newQuestion);
+    }
+  });
+}); // end addQuizShort
+
+app.post('/addQuizMulti', urlencodedParser, bpJason, function(req, res){
+  console.log('from client:', req.body);
+  var newQuestionMulti = new Multi({
+    quizName: req.body.quizname,
+    question: req.body.question,
+    a: req.body.a,
+    b: req.body.b,
+    c: req.body.c,
+    d: req.body.d,
+    answer: req.body.answer
+  }); // end newQuestionMulti
+  newQuestionMulti.save(function(err, newQuestion){
+    if(err){
+      console.log('err saving question:', err);
+    }else{
+      console.log('question created:', newQuestion);
+      res.send(newQuestion);
+    }
+  });
+}); // end addQuizMulti
+
+app.post('/findQuiz', urlencodedParser, bpJason, function(req, res){
+  console.log('from client:', req.body);
+  Short.find({quizName:{$in:[req.body.quizname]}}, function(err, questions){
+    if(err){
+    console.log('error:', err);
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting questions:', questions);
+    res.send(questions);
+    }
+  }); // end find
 });
 
 app.delete('/deleteItem', urlencodedParser, bpJason, function(req, res){
@@ -192,7 +274,7 @@ app.delete('/deleteItem', urlencodedParser, bpJason, function(req, res){
     res.sendStatus(200);
   }
 });
-});
+}); // end deleteItem
 
 app.get('/enum', function(req, res) {
   console.log('enum get hit');

@@ -16,12 +16,19 @@
         <input type="checkbox" name="check" value="c" ng-model="multi.correctAnswerC"> Correct<br>
         <input type="text" placeholder="answer option 4" ng-model="multi.optD">
         <input type="checkbox" name="check" value="d" ng-model="multi.correctAnswerD"> Correct<br>
-        <button class="btn btn-primary" ng-click="addQuestionM(multi)">Add Question</button>
+        <button class="btn btn-primary" ng-click="addQuestionM(multi)">Add Question to {{quizName}}</button>
       </div>
       <div ng-repeat="shortA in questionA">
         <br><input type="text" id="questionBox" placeholder="enter question..." ng-model="shortA.question">
         <input type="text" id="answerBox" placeholder="answer..." ng-model="shortA.value">
-        <button class="btn btn-primary" ng-click="addQuestion(shortA)">Add Question</button>
+        <button class="btn btn-primary" ng-click="addQuestion(shortA)">Add Question to {{quizName}}</button>
   </div>
   <br><button ng-click="finishedQuiz()" type="button" class="btn btn-success">Add new quiz</button>
+</div>
+<div ng-init="getQuizzes()">
+<h4>Please select the quiz to take from the menu below:<h4>
+  <select ng-model="selectedQuiz" ng-options="x.quizName for x in quizzes">
+
+  </select>
+  <button ng-click="selectQuiz()" type="button" class="btn btn-primary">Take quiz</button>
 </div>
