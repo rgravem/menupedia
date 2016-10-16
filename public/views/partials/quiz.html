@@ -20,7 +20,8 @@
       </div>
       <div ng-repeat="shortA in questionA">
         <br><input type="text" id="questionBox" placeholder="enter question..." ng-model="shortA.question">
-        <input type="text" id="answerBox" placeholder="answer..." ng-model="shortA.value">
+        <textarea rows="4" cols="50" id="answerBox" placeholder="answer..." ng-model="shortA.value">
+        </textarea>
         <button class="btn btn-primary" ng-click="addQuestion(shortA)">Add Question to {{quizName}}</button>
   </div>
   <br><button ng-click="finishedQuiz()" type="button" class="btn btn-success">Add new quiz</button>
@@ -28,7 +29,35 @@
 <div ng-init="getQuizzes()">
 <h4>Please select the quiz to take from the menu below:<h4>
   <select ng-model="selectedQuiz" ng-options="x.quizName for x in quizzes">
-
   </select>
   <button ng-click="selectQuiz()" type="button" class="btn btn-primary">Take quiz</button>
+</div>
+<div ng-repeat="multiQuestion in multiChoice">
+  <div>
+    {{multiQuestion.question}}
+  </div>
+  <div>
+  <input type="checkbox" name="check" value="a" ng-model="multi.answerA">  A) {{multiQuestion.a}}
+  </div>
+  <div>
+  <input type="checkbox" name="check" value="b" ng-model="multi.answerB">  B) {{multiQuestion.b}}
+  </div>
+  <div>
+  <input type="checkbox" name="check" value="c" ng-model="multi.answerC">  C) {{multiQuestion.c}}
+  </div>
+  <div>
+  <input type="checkbox" name="check" value="d" ng-model="multi.answerD">  D) {{multiQuestion.d}}
+  <p><button ng-click="submitMultiAnswer()" type="button" class="btn btn-primary">Submit answer</button></p>
+</div><br>
+</div>
+<div ng-repeat="shortQuestion in shortAnswer">
+  <div>
+    {{shortQuestion.question}}
+  </div>
+  <div>
+    <textarea rows="4" cols="50" id="answerBox" placeholder="answer..." ng-model="shortAnswerField">
+    </textarea>
+    <p><button ng-click="submitShortAnswer()" type="button" class="btn btn-primary">Submit answer</button></p>
+  </div><br>
+</div>
 </div>

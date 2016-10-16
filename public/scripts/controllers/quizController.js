@@ -1,5 +1,6 @@
 myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
   console.log('test quizController');
+  var quizAnswers = [];
   $scope.checkAdmin = function(){
     console.log('in check admin, role:', role);
     if (role > 1) {
@@ -117,9 +118,30 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
       url: '/findQuiz',
       data: objectToSend
     }).then(function successCallback(response){
+      $scope.shortAnswer = response.data;
       console.log('back from server with:', response.data);
+      getMultipleChoice();
     }, function errorCallback(response){
       console.log('err');
     });
+
+    var getMultipleChoice = function(){
+    $http({
+      method: 'POST',
+      url: '/findMulti',
+      data: objectToSend
+    }).then(function successCallback(data){
+      $scope.multiChoice = data.data;
+      console.log('multi back:', data.data);
+    }, function errorCallback(data){
+      console.log('err:', data);
+    });
+  };// end getMultipleChoice
   }; // end selectQuiz
+
+  $scope.submitShortAnswer = function(){
+    var shortAnswer = $scope.shortQuestion.answer;
+    console.log($scope.shortQuestion.answer);
+    // quizAnswers.push(shortAnswer);
+  };
 }]); // end quizController

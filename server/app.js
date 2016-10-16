@@ -264,6 +264,19 @@ app.post('/findQuiz', urlencodedParser, bpJason, function(req, res){
   }); // end find
 });
 
+app.post('/findMulti', urlencodedParser, bpJason, function(req, res){
+  console.log('from client:', req.body);
+  Multi.find({quizName:{$in:[req.body.quizname]}}, function(err, questions){
+    if(err){
+    console.log('error:', err);
+    res.sendStatus(500);
+    } else{
+    console.log('succeeded in getting questions:', questions);
+    res.send(questions);
+    }
+  }); // end find
+});
+
 app.delete('/deleteItem', urlencodedParser, bpJason, function(req, res){
   console.log('hit delete on:', req.body);
   Menuitem.findByIdAndRemove(req.body.id, function(err, results){
