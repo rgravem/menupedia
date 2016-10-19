@@ -295,7 +295,6 @@ app.get('/enum', function(req, res) {
 });
 
 app.get("/*", function(req,res){
-    console.log("Here is the property: ", req.params[0]);
     var file = req.params[0] || "/views/index.html";
     res.sendFile(path.join(__dirname, "../public/", file));
 });
