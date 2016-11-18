@@ -18,7 +18,7 @@ var Short = require('../models/shortAnswerModel.js');
 var Quiz = require('../models/quizModel.js');
 
 app.listen(port, function(){
-  console.log('server up on 3000');
+  console.log('server up on port');
 });
 
 app.get('/test', function(req, res) {

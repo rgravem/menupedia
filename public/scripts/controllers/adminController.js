@@ -39,7 +39,7 @@ myApp.controller('adminController', ['$scope', '$http', function($scope, $http) 
         data: objectToSend
       }).then(function successCallback(response){
         console.log('back from server with:', response.data);
-        $scope.addedItem = true
+        $scope.addedItem = true;
         $scope.newestAdd = response.data;
       }, function errorCallback(response) {
         console.log('err');

@@ -144,4 +144,9 @@ myApp.controller('quizController', ['$scope', '$http', function($scope, $http) {
     console.log($scope.shortQuestion.answer);
     // quizAnswers.push(shortAnswer);
   };
+
+  $scope.completedQuiz = function(){
+    console.log('completed clicked');
+    location.reload();
+  };
 }]); // end quizController
