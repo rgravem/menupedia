@@ -28,7 +28,7 @@
 </div>
 <div ng-init="getQuizzes()">
 <h4>Please select the quiz to take from the menu below:<h4>
-  <select ng-model="selectedQuiz" class="form-control" ng-options="x.quizName for x in quizzes">
+  <select ng-model="selectedQuiz" class="form-control" id="selectquiz" ng-options="x.quizName for x in quizzes">
   </select>
   <button ng-click="selectQuiz()" type="button" class="btn btn-primary">Take quiz</button>
 </div>
