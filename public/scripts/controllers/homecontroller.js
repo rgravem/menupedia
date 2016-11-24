@@ -29,4 +29,4 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http) {
     }); // end query call
   }; // end search
 
-}]);
+}]); // end controller
