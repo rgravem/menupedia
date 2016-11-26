@@ -8,6 +8,7 @@ var path = require('path');
 var port = process.env.PORT || 3000;
 var mongoURI = 'mongodb://localhost:27017/menuItems';
 mongoose.connect(mongoURI);
+var nodemailer = require('nodemailer');
 
 app.use( express.static( 'public' ) );
 
