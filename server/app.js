@@ -29,6 +29,14 @@ app.get('/test', function(req, res) {
     role: "4"
   });
 
+  var smtpTransport = nodemailer.createTransport("SMTP",{
+   service: "Gmail",  // sets automatically host, port and connection security settings
+   auth: {
+       user: "rossgravem@gmail.com",
+       pass: ""
+   }
+});
+
   dummyItem.save(function(err) {
     if(err){
       console.log('error occurred:', err);
