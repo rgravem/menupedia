@@ -29,6 +29,7 @@ app.get('/test', function(req, res) {
     role: "4"
   });
 
+// nodemailer
   var smtpTransport = nodemailer.createTransport("SMTP",{
    service: "Gmail",  // sets automatically host, port and connection security settings
    auth: {
